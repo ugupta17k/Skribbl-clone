@@ -3,7 +3,16 @@ import { useState } from "react";
 type Player = { name: string; score: number };
 type PublicRoom = { roomId: string; playerCount: number };
 
-
+const AVATAR_COLORS = [
+  "bg-rose-400",
+  "bg-amber-400",
+  "bg-lime-400",
+  "bg-teal-400",
+  "bg-sky-400",
+  "bg-violet-400",
+  "bg-pink-400",
+  "bg-orange-400",
+];
 
 function avatarColor(name: string) {
   let sum = 0;
