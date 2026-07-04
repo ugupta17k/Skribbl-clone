@@ -5,6 +5,7 @@ import Canvas from "./Components/Canvas";
 import Chat from "./Components/Chat";
 import Auth from "./Auth";
 import History from "./History";
+import { WS_BASE_URL } from "./config";
 
 type Player = { name: string; score: number };
 
@@ -38,8 +39,8 @@ export function App() {
   function createSocket(currentPlayerName = playerName) {
     const token = localStorage.getItem("token");
     const socketUrl = token
-      ? `ws://localhost:8080?token=${token}`
-      : "ws://localhost:8080";
+      ? `${WS_BASE_URL}?token=${token}`
+      : WS_BASE_URL;
 
     const socket = new WebSocket(socketUrl);
 

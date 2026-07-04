@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { API_BASE_URL } from './config';
 
 function Auth({ onLoginSuccess, onSkip }) {
   const [isRegisterMode, setIsRegisterMode] = useState(false);
@@ -17,7 +18,7 @@ function Auth({ onLoginSuccess, onSkip }) {
     const endpoint = isRegisterMode ? 'register' : 'login';
 
     try {
-      const res = await fetch(`http://localhost:8080/${endpoint}`, {
+      const res = await fetch(`${API_BASE_URL}/${endpoint}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password })

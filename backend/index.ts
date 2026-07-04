@@ -3,14 +3,22 @@ import cors from 'cors';
 import { WebSocketServer, WebSocket } from 'ws';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+import path from 'path';
+import { existsSync } from 'fs';
 import { prisma } from './lib/prisma';
 
 const JWT_SECRET = process.env.JWT_SECRET || 'fallback_secret_key_change_me';
 const PORT = process.env.PORT || 8080;
+const frontendDistPath = path.resolve(import.meta.dir, '../frontend/dist');
+const frontendIndexPath = path.join(frontendDistPath, 'index.html');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+app.get('/healthz', (_req, res) => {
+  res.json({ ok: true });
+});
 
 const httpServer = app.listen(PORT, () => {
   console.log('server is running on port ' + PORT);
@@ -404,6 +412,13 @@ app.get('/my-history', verifyToken, async (req: any, res) => {
   }
 });
 
-app.get('/', (req, res) => {
+app.use(express.static(frontendDistPath));
+
+app.get(/.*/, (req, res) => {
+  if (existsSync(frontendIndexPath) && req.accepts('html')) {
+    res.sendFile(frontendIndexPath);
+    return;
+  }
+
   res.send('Skribbl clone backend is running');
 });

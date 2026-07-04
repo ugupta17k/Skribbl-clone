@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { API_BASE_URL } from './config';
 
 function History({ onBack }) {
   const [history, setHistory] = useState<{ roomId: string; score: number; won: boolean; playedAt: string }[]>([]);
@@ -12,7 +13,7 @@ function History({ onBack }) {
       return;
     }
 
-    fetch('http://localhost:8080/my-history', {
+    fetch(`${API_BASE_URL}/my-history`, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(res => res.json())
