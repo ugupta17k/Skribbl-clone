@@ -11,7 +11,7 @@ function Chat({ ws, isDrawer }) {
       if (data.type === 'guess_result' && data.correct) {
         setMessages((prev) => [
           ...prev,
-          { text: data.playerName + ' ne word guess kar liya!', correct: true }
+          { text: data.playerName + ' guess the word', correct: true }
         ]);
       }
 
@@ -54,13 +54,13 @@ function Chat({ ws, isDrawer }) {
             value={guessInput}
             onChange={(e) => setGuessInput(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder="Guess type kar..."
+            placeholder="Guess the word"
           />
           <button
             className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded text-sm"
             onClick={sendGuess}
           >
-            Bhejo
+            send
           </button>
         </div>
       )}

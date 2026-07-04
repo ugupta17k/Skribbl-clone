@@ -41,21 +41,24 @@ function Auth({ onLoginSuccess, onSkip }) {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-md w-96 text-center">
+    <div className="min-h-screen flex  flex-col items-center justify-center bg-gray-100">
+      <div className='mb-10'>
+      <h1 className='text-4xl font-bold'>Welcome to skribbl</h1>
+      </div>
+      <div className="bg-white rounded-xl p-8 rounded-lg shadow-md w-96 text-center">
         <h1 className="text-2xl font-bold mb-4">
           {isRegisterMode ? 'Register Karo' : 'Login Karo'}
         </h1>
 
         <input
-          className="w-full border border-gray-300 rounded px-3 py-2 mb-3"
+          className="w-full border rounded-xl border-gray-300 rounded px-3 py-2 mb-3"
           placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
 
         <input
-          className="w-full border border-gray-300 rounded px-3 py-2 mb-3"
+          className="w-full rounded-xl border border-gray-300 rounded px-3 py-2 mb-3"
           placeholder="Password"
           type="password"
           value={password}
@@ -67,7 +70,7 @@ function Auth({ onLoginSuccess, onSkip }) {
         )}
 
         <button
-          className="w-full bg-green-500 hover:bg-green-600 text-white py-2 rounded mb-3"
+          className="w-full rounded-xl bg-blue-500 hover:bg-black text-white cursor-pointer py-2 rounded mb-3"
           onClick={handleSubmit}
         >
           {isRegisterMode ? 'Register' : 'Login'}
@@ -84,10 +87,10 @@ function Auth({ onLoginSuccess, onSkip }) {
         </p>
 
         <button
-          className="w-full bg-gray-300 hover:bg-gray-400 text-gray-800 py-2 rounded"
+          className="w-full rounded-xl bg-gray-300 hover:bg-gray-400 text-gray-800 py-2 rounded"
           onClick={onSkip}
         >
-          play game
+          <b>Play game</b>
         </button>
       </div>
     </div>

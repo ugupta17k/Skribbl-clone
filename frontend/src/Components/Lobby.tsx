@@ -3,16 +3,7 @@ import { useState } from "react";
 type Player = { name: string; score: number };
 type PublicRoom = { roomId: string; playerCount: number };
 
-const AVATAR_COLORS = [
-  "bg-rose-400",
-  "bg-amber-400",
-  "bg-lime-400",
-  "bg-teal-400",
-  "bg-sky-400",
-  "bg-violet-400",
-  "bg-pink-400",
-  "bg-orange-400",
-];
+
 
 function avatarColor(name: string) {
   let sum = 0;
@@ -157,13 +148,7 @@ function Lobby({
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 via-white to-orange-50 p-4">
       <div className="w-full max-w-md">
         <h1 className="text-center text-4xl font-black tracking-tight mb-6 select-none">
-          <span className="text-rose-500">S</span>
-          <span className="text-orange-500">k</span>
-          <span className="text-amber-500">r</span>
-          <span className="text-lime-500">i</span>
-          <span className="text-teal-500">b</span>
-          <span className="text-sky-500">b</span>
-          <span className="text-violet-500">l</span>
+          Skribbl
         </h1>
 
         <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
